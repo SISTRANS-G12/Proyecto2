@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -23,8 +22,8 @@ public class Reserva {
     private String fecha_entrada;
     private String fecha_salida;
     private Integer numero_personas;
-    private Integer check_in;
-    private Integer check_out;
+    private boolean check_in;
+    private boolean check_out;
 
     //FK
     @ManyToOne
@@ -35,7 +34,7 @@ public class Reserva {
     @JoinColumn(name = "Habitaciones_id", referencedColumnName = "id")
     private Habitacion Habitaciones_id;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "Usuarios_id", referencedColumnName = "id")
     private Usuario Usuarios_id;
 
@@ -44,7 +43,7 @@ public class Reserva {
     public Reserva()
     {;}
 
-    public Reserva(String fecha_entrada, String fecha_salida, Integer numero_personas, Integer check_in, Integer check_out, PlanConsumo PlanesConsumo_id, Habitacion Habitaciones_id, Usuario Usuarios_id)
+    public Reserva(String fecha_entrada, String fecha_salida, Integer numero_personas, boolean check_in, boolean check_out, PlanConsumo PlanesConsumo_id, Habitacion Habitaciones_id, Usuario Usuarios_id)
     {
         this.fecha_entrada = fecha_entrada;
         this.fecha_salida = fecha_salida;
@@ -89,19 +88,19 @@ public class Reserva {
         this.numero_personas = numero_personas;
     }
 
-    public Integer getCheck_in() {
+    public boolean getCheck_in() {
         return check_in;
     }
 
-    public void setCheck_in(Integer check_in) {
+    public void setCheck_in(boolean check_in) {
         this.check_in = check_in;
     }
 
-    public Integer getCheck_out() {
+    public boolean getCheck_out() {
         return check_out;
     }
 
-    public void setCheck_out(Integer check_out) {
+    public void setCheck_out(boolean check_out) {
         this.check_out = check_out;
     }
 

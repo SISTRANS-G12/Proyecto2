@@ -22,7 +22,7 @@ public class Servicio {
     private Integer precio;
     private String nombre;
     private String descripcion;
-    private Integer incluido;
+    private boolean incluido;
     private String caracteristica;
     
     
@@ -40,7 +40,7 @@ public class Servicio {
     public Servicio()
     {;}
 
-    public Servicio(Integer precio, String nombre, String descripcion, Integer incluido, String caracteristica, TipoServicio TiposServicio_id, Local Locales_id)
+    public Servicio(Integer precio, String nombre, String descripcion, boolean incluido, String caracteristica, TipoServicio TiposServicio_id, Local Locales_id)
     {
         this.precio = precio;
         this.nombre = nombre;
@@ -84,11 +84,11 @@ public class Servicio {
         this.descripcion = descripcion;
     }
 
-    public Integer getIncluido() {
+    public boolean getIncluido() {
         return incluido;
     }
 
-    public void setIncluido(Integer incluido) {
+    public void setIncluido(boolean incluido) {
         this.incluido = incluido;
     }
 

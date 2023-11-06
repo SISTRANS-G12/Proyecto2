@@ -17,7 +17,7 @@ public interface PlanConsumoRepository extends JpaRepository<PlanConsumo, Intege
     @Transactional
     @Query(value = "INSERT INTO PlanesConsumo (id, descripcion, descuento, precio_fijo) VALUES ( proyectoHotels1_sequence.nextval , :descripcion, :descuento, :precio_fijo)", nativeQuery = true)
     void insertarPlanConsumo(@Param("descripcion") String descripcion,
-                         @Param("descuento") Double descuento,
+                         @Param("descuento") Float descuento,
                          @Param("precio_fijo") Integer precio_fijo);
 
     //READ
@@ -32,7 +32,7 @@ public interface PlanConsumoRepository extends JpaRepository<PlanConsumo, Intege
     @Query(value = "UPDATE PlanesConsumo SET descripcion = :descripcion, descuento = :descuento, precio_fijo = :precio_fijo WHERE id = :id", nativeQuery = true)
     void actualizarPlanConsumo(@Param("id") long id,
                           @Param("descripcion") String descripcion,
-                          @Param("descuento") Double descuento,
+                          @Param("descuento") Float descuento,
                           @Param("precio_fijo") Integer precio_fijo);
 
     //DELETE

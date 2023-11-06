@@ -19,8 +19,8 @@ public interface ReservaRepository extends JpaRepository<Reserva, Integer>{
     void insertarReserva(@Param("fecha_entrada") String fecha_entrada,
                          @Param("fecha_salida") String fecha_salida,
                          @Param("numero_personas") Integer numero_personas,
-                         @Param("check_in") Integer check_in,
-                         @Param("check_out") Integer check_out,
+                         @Param("check_in") boolean check_in,
+                         @Param("check_out") boolean check_out,
                          @Param("PlanesConsumo_id") Integer PlanesConsumo_id,
                          @Param("Habitaciones_id") Integer Habitaciones_id,
                          @Param("Usuarios_id") Integer Usuarios_id);
@@ -39,8 +39,8 @@ public interface ReservaRepository extends JpaRepository<Reserva, Integer>{
                           @Param("fecha_entrada") String fecha_entrada,
                           @Param("fecha_salida") String fecha_salida,
                           @Param("numero_personas") Integer numero_personas,
-                          @Param("check_in") Integer check_in,
-                          @Param("check_out") Integer check_out,
+                          @Param("check_in") boolean check_in,
+                          @Param("check_out") boolean check_out,
                           @Param("PlanesConsumo_id") Integer PlanesConsumo_id,
                           @Param("Habitaciones_id") Integer Habitaciones_id,
                           @Param("Usuarios_id") Integer Usuarios_id);

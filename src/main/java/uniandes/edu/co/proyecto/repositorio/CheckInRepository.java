@@ -28,7 +28,8 @@ public interface CheckInRepository extends JpaRepository<CheckIn, Integer>{
     @Modifying
     @Transactional
     @Query(value = "UPDATE CheckIns SET Reservas_id = :Reservas_id WHERE id = :id", nativeQuery = true)
-    void actualizarCheckIn(@Param("Reservas_id") Integer Reservas_id);
+    void actualizarCheckIn(@Param("id") long id,
+                            @Param("Reservas_id") Integer Reservas_id);
 
     //DELETE
     @Modifying

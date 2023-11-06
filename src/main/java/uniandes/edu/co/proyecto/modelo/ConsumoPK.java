@@ -71,11 +71,11 @@ public class ConsumoPK implements Serializable{
         this.fecha_reservacion = fecha_reservacion;
     }
 
-    public String getEmpleadoRegistro(){
+    public String getEmpleado_registro(){
         return this.empleado_registro;
     }
 
-    public void setEmpleadoRegistro(String empleado_registro){
+    public void setEmpleado_registro(String empleado_registro){
         this.empleado_registro = empleado_registro;
     }
 }

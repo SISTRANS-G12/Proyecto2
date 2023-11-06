@@ -19,7 +19,7 @@ public interface ServicioRepository extends JpaRepository<Servicio, Integer>{
     void insertarServicio(@Param("precio") Integer precio,
                          @Param("nombre") String nombre,
                          @Param("descripcion") String descripcion,
-                         @Param("incluido") Integer incluido,
+                         @Param("incluido") boolean incluido,
                          @Param("caracteristica") String caracteristica,
                          @Param("TiposServicio_id") Integer TiposServicio_id,
                          @Param("Locales_id") Integer Locales_id);
@@ -38,7 +38,7 @@ public interface ServicioRepository extends JpaRepository<Servicio, Integer>{
                           @Param("precio") Integer precio,
                           @Param("nombre") String nombre,
                           @Param("descripcion") String descripcion,
-                          @Param("incluido") Integer incluido,
+                          @Param("incluido") boolean incluido,
                           @Param("caracteristica") String caracteristica,
                           @Param("TiposServicio_id") Integer TiposServicio_id,
                           @Param("Locales_id") Integer Locales_id);

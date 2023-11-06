@@ -17,18 +17,16 @@ public class Local {
 
     //Atributos
     private Integer capacidad;
-    private Integer ocupado;
-    private String horario_servicio;
+    private boolean ocupado;
 
     //Constructor
     public Local()
     {;}
 
-    public Local(Integer capacidad, Integer ocupado, String horario_servicio)
+    public Local(Integer capacidad, boolean ocupado)
     {
         this.capacidad = capacidad;
         this.ocupado = ocupado;
-        this.horario_servicio = horario_servicio;
     }
 
     //Getters y Setters
@@ -48,19 +46,11 @@ public class Local {
         this.capacidad = capacidad;
     }
 
-    public Integer getOcupado() {
+    public boolean getOcupado() {
         return ocupado;
     }
 
-    public void setOcupado(Integer ocupado) {
+    public void setOcupado(boolean ocupado) {
         this.ocupado = ocupado;
-    }
-
-    public String getHorario_servicio() {
-        return horario_servicio;
-    }
-
-    public void setHorario_servicio(String horario_servicio) {
-        this.horario_servicio = horario_servicio;
     }
 }

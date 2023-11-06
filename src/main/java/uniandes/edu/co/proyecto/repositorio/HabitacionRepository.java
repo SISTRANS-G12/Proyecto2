@@ -16,7 +16,7 @@ public interface HabitacionRepository extends JpaRepository<Habitacion, Integer>
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO Habitaciones (id, disponible, cuenta, TiposHabitacion_id) VALUES ( proyectoHotels1_sequence.nextval , :disponible, :cuenta, :TiposHabitacion_id)", nativeQuery = true)
-    void insertarHabitacion(@Param("disponible") Integer disponible, 
+    void insertarHabitacion(@Param("disponible") boolean disponible, 
                         @Param("cuenta") Integer cuenta,
                         @Param("TiposHabitacion_id") Integer TiposHabitacion_id);
 
@@ -31,7 +31,7 @@ public interface HabitacionRepository extends JpaRepository<Habitacion, Integer>
     @Transactional
     @Query(value = "UPDATE Habitaciones SET disponible = :disponible, cuenta = :cuenta, TiposHabitacion_id = :TiposHabitacion_id WHERE id = :id", nativeQuery = true)
     void actualizarHabitacion(@Param("id") long id,
-                          @Param("disponible") Integer disponible,
+                          @Param("disponible") boolean disponible,
                           @Param("cuenta") Integer cuenta,
                           @Param("TiposHabitacion_id") Integer TiposHabitacion_id);
                         

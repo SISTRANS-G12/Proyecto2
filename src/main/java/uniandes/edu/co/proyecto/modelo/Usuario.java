@@ -21,7 +21,7 @@ public class Usuario {
     private String tipo_documento;
     private Integer numero_documento;
     private String nombre;
-    private String correo_electronico;
+    private String correo;
 
     //FK
     @ManyToOne
@@ -32,12 +32,12 @@ public class Usuario {
     public Usuario()
     {;}
 
-    public Usuario(String tipo_documento, Integer numero_documento, String nombre, String correo_electronico, TipoUsuario TiposUsuario_id)
+    public Usuario(String tipo_documento, Integer numero_documento, String nombre, String correo, TipoUsuario TiposUsuario_id)
     {
         this.tipo_documento = tipo_documento;
         this.numero_documento = numero_documento;
         this.nombre = nombre;
-        this.correo_electronico = correo_electronico;
+        this.correo = correo;
         this.TiposUsuario_id = TiposUsuario_id;
     }
 
@@ -74,12 +74,12 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getCorreo_electronico() {
-        return correo_electronico;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setCorreo_electronico(String correo_electronico) {
-        this.correo_electronico = correo_electronico;
+    public void setCorreo(String correo_electronico) {
+        this.correo = correo_electronico;
     }
 
     public TipoUsuario getTiposUsuario_id() {
