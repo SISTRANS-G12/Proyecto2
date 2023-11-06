@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
 
 import uniandes.edu.co.proyecto.modelo.Servicio;
 import uniandes.edu.co.proyecto.repositorio.ServicioRepository;
 
-@RestController
+@Controller
 public class ServiciosController {
     
     @Autowired
@@ -40,7 +40,7 @@ public class ServiciosController {
     @GetMapping("/servicios")
     public String servicios(Model model){
         model.addAttribute("servicios", servicioRepository.darServicios());
-        return model.toString();
+        return "servicios";
     }
 
     //UPDATE

@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
 
 import uniandes.edu.co.proyecto.modelo.Local;
 import uniandes.edu.co.proyecto.repositorio.LocalRepository;
 
 
-@RestController
+@Controller
 public class LocalController {
 
     @Autowired
