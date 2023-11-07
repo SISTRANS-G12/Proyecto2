@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos Usuarios</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div>
+        <h1>Lista de Tipos Usuario</h1>
+        <table class="table table-hover table_bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <th:block th:each="TipoUsuario:${TiposUsuario}">
+                <tr>
+                    <td th:text="${TipoUsuario.id}"></td>
+                    <td th:text="${TipoUsuario.nombre}"></td>
+                    <td>
+                        <a th:href="@{tiposUsuario/{id}/edit(id=${TipoUsuario.id})}">
+                            Editar
+                        </a>
+                        <a th:href="@{tiposUsuario/{id}/delete(id=${TipoUsuario.id})}" 
+                        onclick="return confirm('Estas seguro de borrar este Tipo Usuario?')">
+                        Eliminar
+                        </a>                                
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+        <div>
+            <a th:href="@{tiposUsuario/new}" class="btn btn-primary">Nuevo Tipo Usuario</a>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atras</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crear check out</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+    </head>
+    <body>
+        <form action="#" th:action="@{/checkouts/new/save}" method="post">
+            <div th:replace="~{fragments/checkOutForm :: checkOutForm(titulo='Crear check out', reservas=${reservas})}">
+            </div>   
+        </form>  
+    </body>
+</html>

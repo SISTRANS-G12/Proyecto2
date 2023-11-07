@@ -39,7 +39,7 @@ public class CheckInController {
     @GetMapping("/checkins")
     public String checkIns(Model model){
         model.addAttribute("checkins", checkInRepository.darCheckIns());
-        return model.toString();
+        return "checkIns";
     }
 
     //UPDATE

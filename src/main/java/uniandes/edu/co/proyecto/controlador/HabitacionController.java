@@ -40,7 +40,7 @@ public class HabitacionController {
     @GetMapping("/habitaciones")
     public String habitaciones(Model model){
         model.addAttribute("habitaciones", habitacionRepository.darHabitaciones());
-        return model.toString();
+        return "habitaciones";
     }
 
     //UPDATE
@@ -66,7 +66,7 @@ public class HabitacionController {
     }
 
     //DELETE
-    @GetMapping("/habitaciones/{id}/delte")
+    @GetMapping("/habitaciones/{id}/delete")
     public String habitacionEliminar(@PathVariable("id") int id){
         habitacionRepository.eliminarHabitacion(id);
         return "redirect:/habitaciones";

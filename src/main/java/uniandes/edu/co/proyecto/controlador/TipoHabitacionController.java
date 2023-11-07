@@ -36,7 +36,7 @@ public class TipoHabitacionController {
     @GetMapping("/tiposhabitacion")
     public String reservas(Model model){
         model.addAttribute("tiposHabitacion", tipoHabitacionRepository.darTiposHabitacion());
-        return model.toString();
+        return "tiposHabitacion";
     }
 
     //UPDATE

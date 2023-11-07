@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div>
+        <h1>Lista de Servicios</h1>
+        <table class="table table-hover table_bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Precio</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Incluido</th>
+                    <th>Caracteristica</th>
+                    <th>ID Tipo Servicio</th>
+                    <th>ID Local</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <th:block th:each="servicio:${servicios}">
+                <tr>
+                    <td th:text="${servicio.id}"></td>
+                    <td th:text="${servicio.precio}"></td>
+                    <td th:text="${servicio.nombre}"></td>
+                    <td th:text="${servicio.descripcion}"></td>
+                    <td th:text="${servicio.incluido}"></td>
+                    <td th:text="${servicio.caracteristica}"></td>
+                    <td th:text="${servicio.TiposServicio_id}"></td>
+                    <td th:text="${servicio.Locales_id}"></td>
+                    <td>
+                        <a th:href="@{servicios/{id}/edit(id=${servicio.id})}">
+                            Editar
+                        </a>
+                        <a th:href="@{servicios/{id}/delete(id=${servicio.id})}" 
+                        onclick="return confirm('Estas seguro de borrar este servicio?')">
+                        Eliminar
+                        </a>                                
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+        <div>
+            <a th:href="@{servicios/new}" class="btn btn-primary">Nuevo servicio</a>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atras</a>
+        </div>
+    </div>
+
+</body>
+</html>

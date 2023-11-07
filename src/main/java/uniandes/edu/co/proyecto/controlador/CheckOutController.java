@@ -40,7 +40,7 @@ public class CheckOutController {
     @GetMapping("/checkouts")
     public String checkOuts(Model model){
         model.addAttribute("checkouts", checkOutRepository.darCheckOuts());
-        return model.toString();
+        return "checkOuts";
     }
 
     //UPDATE
