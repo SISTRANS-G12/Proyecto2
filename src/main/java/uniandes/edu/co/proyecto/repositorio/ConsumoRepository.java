@@ -25,26 +25,23 @@ public interface ConsumoRepository extends JpaRepository<Consumo, Integer>{
     //READ
     @Query(value = "SELECT * FROM Consumos", nativeQuery = true)
     Collection<Consumo> darConsumos();
-    @Query(value = "SELECT * FROM Consumos WHERE Habitaciones_id = :Habitaciones_id AND Servicios_id = :Servicios_id", nativeQuery = true)
-    Collection<Consumo> darConsumosPorId(@Param("Habitaciones_id") Integer Habitaciones_id,
-                                         @Param("Servicios_id") Integer Servicios_id);
-    @Query(value = "SELECT * FROM Consumos WHERE Habitaciones_id = :Habitaciones_id AND Servicios_id = :Servicios_id AND fecha_consumo = :fecha_consumo AND fecha_reservacion = :fecha_reservacion AND empleado_registro = :empleado_registro", nativeQuery = true)
-    Consumo darConsumo(@Param("Habitaciones_id") Integer Habitaciones_id,
-                       @Param("Servicios_id") Integer Servicios_id,
-                       @Param("fecha_consumo") String fecha_consumo,
-                       @Param("fecha_reservacion") String fecha_reservacion,
-                       @Param("empleado_registro") String empleado_registro);
+    @Query(value = "SELECT * FROM Consumos WHERE id = :id", nativeQuery = true)
+    Consumo darConsumo(@Param("id") Long id);
 
-    //No incluimos update porque no se puede, todos los atributos forman parte de la PK, por lo que no puede haber duplicados,
-    //La unica forma de "Actualizar" una reservacion de servicio es borrandola y creando otra.
-
-    //DELETE
+    //UPDATE
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM Consumos WHERE Habitaciones_id = :Habitaciones_id AND Servicios_id = :Servicios_id AND fecha_consumo = :fecha_consumo AND fecha_reservacion = :fecha_reservacion AND empleado_registro = :empleado_registro", nativeQuery = true)
-    void eliminarConsumo(@Param("Habitaciones_id") Integer Habitaciones_id,
-                         @Param("Servicios_id") Integer Servicios_id,
-                         @Param("fecha_consumo") String fecha_consumo,
-                         @Param("fecha_reservacion") String fecha_reservacion,
-                         @Param("empleado_registro") String empleado_registro);
+    @Query(value="UPDATE Consumos SET Habitaciones_id = :Habitaciones_id, Servicios_id = :Servicios_id, fecha_consumo = :fecha_consumo, fecha_reservacion = :fecha_reservacion, empleado_registro = :empleado_registro WHERE id = :id", nativeQuery = true)
+    void actualizarConsumo(@Param("id") long id,
+                           @Param("Habitaciones_id") Integer Habitaciones_id,
+                           @Param("Servicios_id") Integer Servicios_id,
+                           @Param("fecha_consumo") String fecha_consumo,
+                           @Param("fecha_reservacion") String fecha_reservacion,
+                           @Param("empleado_registro") String empleado_registro);
+
+    //DELETE
+    @Modifying 
+    @Transactional
+    @Query(value="DELETE FROM Consumos WHERE id = :id", nativeQuery = true)
+    void eliminarConsumo(@Param("id") long id);
 }

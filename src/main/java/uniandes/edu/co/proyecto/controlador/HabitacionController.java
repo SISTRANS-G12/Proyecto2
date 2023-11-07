@@ -10,16 +10,21 @@ import org.springframework.stereotype.Controller;
 
 import uniandes.edu.co.proyecto.modelo.Habitacion;
 import uniandes.edu.co.proyecto.repositorio.HabitacionRepository;
+import uniandes.edu.co.proyecto.repositorio.TipoHabitacionRepository;
 
 @Controller
 public class HabitacionController {
     @Autowired
     private HabitacionRepository habitacionRepository;
+    
+    @Autowired
+    private TipoHabitacionRepository tipoHabitacionRepository;
 
     //CREATE
     @GetMapping("/habitaciones/new")
     public String habitacionForm(Model model){
         model.addAttribute("habitacion", new Habitacion());
+        model.addAttribute("tipos", tipoHabitacionRepository.darTiposHabitacion());
         return "habitacionNuevo";
     }
 
@@ -44,6 +49,7 @@ public class HabitacionController {
         Habitacion habitacion = habitacionRepository.darHabitacion(id);
         if(habitacion != null){
             model.addAttribute("habitacion", habitacion);
+            model.addAttribute("tipos", tipoHabitacionRepository.darTiposHabitacion());
             return "habitacionEditar";
         } else {
             return "redirect:/habitaciones";

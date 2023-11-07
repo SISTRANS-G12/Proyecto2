@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 
 import uniandes.edu.co.proyecto.modelo.CheckIn;
 import uniandes.edu.co.proyecto.repositorio.CheckInRepository;
+import uniandes.edu.co.proyecto.repositorio.ReservaRepository;
 
 @Controller
 public class CheckInController {
@@ -17,10 +18,14 @@ public class CheckInController {
     @Autowired
     private CheckInRepository checkInRepository;
 
+    @Autowired
+    private ReservaRepository reservaRepository;
+
     //CREATE
     @GetMapping("/checkins/new")
     public String checkInForm(Model model){
         model.addAttribute("checkin", new CheckIn());
+        model.addAttribute("reservas", reservaRepository.darReservas());
         return "checkInNuevo";
     }
 
@@ -43,6 +48,7 @@ public class CheckInController {
         CheckIn checkIn = checkInRepository.darCheckIn(id);
         if(checkIn != null){
             model.addAttribute("checkIn", checkIn);
+            model.addAttribute("reservas", reservaRepository.darReservas());
             return "checkInEditar";
         } else {
             return "redirect:/checkIns";

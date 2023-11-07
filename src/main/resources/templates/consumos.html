@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumos</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div>
+        <h1>Lista de Consumos</h1>
+        <table class="table table-hover table_bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID habitacion</th>
+                    <th>ID servicio</th>
+                    <th>Fecha reservacion</th>
+                    <th>Fecha consumo</th>
+                    <th>Empleado registro</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="consumo:${consumos}">
+                    <tr>
+                        <td th:text="${consumo.Habitaciones_id}"></td>
+                        <td th:text="${consumo.Servicios_id}"></td>
+                        <td th:text="${consumo.fecha_consumo}"></td>
+                        <td th:text="${consumo.fecha_reservacion}"></td>
+                        <td th:text="${consumo.empleado_registro}"></td>
+                        <td>
+                            <a th:href="@{consumos/{id}/edit(id=${consumo.id})}">
+                                Editar
+                            </a>
+                            <a th:href="@{consumos/{id}/delete(id=${consumo.id})}" 
+                            onclick="return confirm('Estas seguro de borrar este consumo?')">
+                            Eliminar
+                            </a>                                
+                        </td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+        <div>
+            <a th:href="@{consumos/new}" class="btn btn-primary">Nuevo consumo</a>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atras</a>
+        </div>
+    </div>
+</body>
+</html>

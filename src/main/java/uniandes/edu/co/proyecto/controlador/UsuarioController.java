@@ -10,17 +10,22 @@ import org.springframework.stereotype.Controller;
 
 import uniandes.edu.co.proyecto.modelo.Usuario;
 import uniandes.edu.co.proyecto.repositorio.UsuarioRepository;
+import uniandes.edu.co.proyecto.repositorio.TipoUsuarioRepository;
 
 @Controller
 public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+    
+    @Autowired
+    private TipoUsuarioRepository tipoUsuarioRepository;
 
     //CREATE
     @GetMapping("/usuarios/new")
     public String usuarioForm(Model model){
         model.addAttribute("usuario, new Usuario()");
+        model.addAttribute("tipos", tipoUsuarioRepository.darTiposUsuario());
         return "usuarioNuevo";
     }
 
@@ -47,6 +52,7 @@ public class UsuarioController {
         Usuario usuario = usuarioRepository.darUsuario(id);
         if(usuario != null){
             model.addAttribute("usuario", usuario);
+            model.addAttribute("tipos", tipoUsuarioRepository.darTiposUsuario());
             return "usuarioEditar";
         } else {
             return "redirect:/usuarios";

@@ -25,6 +25,33 @@
                 <option value=0 th:selected="${reserva.check_in eq 0}">True</option>
             </select>
 
+            <label class="col-form-labeled">Check out</label>
+            <select class="form-control" id="check_out" name="check_out" required>
+                <option value=1 th:selected="${reserva.check_out eq 1}">False</option>
+                <option value=0 th:selected="${reserva.check_out eq 0}">True</option>
+            </select>
+
+            <label class="col-form-label" for="PlanesConsumo_id">Plan:</label>
+            <select class="form-control" id="PlanesConsumo_id" name="PlanesConsumo_id" required>
+                <th:block th:each="PlanesConsumo_id : ${planes}" >
+                    <option th:value="${PlanesConsumo_id.id}" th:text="${PlanesConsumo_id.descripcion}" th:selected="${reserva!=null || reserva.PlanesConsumo_id.id == PlanesConsumo_id.id}"></option> 
+                </th:block>
+            </select>
+
+            <label class="col-form-label" for="Habitaciones_id">Habitacion:</label>
+            <select class="form-control" id="Habitaciones_id" name="Habitaciones_id" required>
+                <th:block th:each="Habitaciones_id : ${habitaciones}" >
+                    <option th:value="${Habitaciones_id.id}" th:text="${Habitaciones_id.disponible}" th:selected="${reserva!=null || reserva.Habitaciones_id.id == Habitaciones_id.id}"></option> 
+                </th:block>
+            </select>
+
+            <label class="col-form-label" for="Usuarios_id">Usuario:</label>
+            <select class="form-control" id="Usuarios_id" name="Usuarios_id" required>
+                <th:block th:each="Usuarios_id : ${usuarios}" >
+                    <option th:value="${Usuarios_id.id}" th:text="${Usuarios_id.nombre}" th:selected="${reserva!=null || reserva.Usuarios_id.id == Usuarios_id.id}"></option> 
+                </th:block>
+            </select>
+
             <br>
 
             <div class="text-center">

@@ -18,53 +18,53 @@ public class PlanConsumoController {
     private PlanConsumoRepository planConsumoRepository;
 
     //CREATE 
-    @GetMapping("planesConsumo/new")
+    @GetMapping("planesconsumo/new")
     public String planConsumoForm(Model model){
         model.addAttribute("planConsumo", new PlanConsumo());
         return "planConsumoNuevo";
     }
 
-    @PostMapping("/planesConsumo/new/save")
+    @PostMapping("/planesconsumo/new/save")
     public String planConsumoGuardar(@ModelAttribute PlanConsumo planConsumo){
         planConsumoRepository.insertarPlanConsumo(planConsumo.getDescripcion(),
                                                   planConsumo.getDescuento(),
                                                   planConsumo.getPrecio_fijo());
-        return "redirect:/planesConsumo";                                    
+        return "redirect:/planesconsumo";                                    
     }
 
     //READ
-    @GetMapping("/planesConsumo")
+    @GetMapping("/planesconsumo")
     public String planesConsumo(Model model){
         model.addAttribute("planesConsumo", planConsumoRepository.darPlanesConsumo());
-        return model.toString();
+        return "planesConsumo";
     }
 
     //UPDATE
-    @GetMapping("/planesConsumo/{id}/edit")
+    @GetMapping("/planesconsumo/{id}/edit")
     public String planConsumoEditarForm(@PathVariable("id") int id, Model model){
         PlanConsumo planConsumo = planConsumoRepository.darPlanConsumo(id);
         if(planConsumo != null){
             model.addAttribute("planConsumo", planConsumo);
             return "planConsumoEditar";
         } else {
-            return "redirect:/planesConsumo";
+            return "redirect:/planesconsumo";
         }
     }
 
-    @PostMapping("/planesConsumo/{id}/edit/save")
+    @PostMapping("/planesconsumo/{id}/edit/save")
     public String planConsumoEditarGuardar(@PathVariable("id") int id, @ModelAttribute PlanConsumo planConsumo){
         planConsumoRepository.actualizarPlanConsumo(id,
                                                     planConsumo.getDescripcion(),
                                                     planConsumo.getDescuento(),
                                                     planConsumo.getPrecio_fijo());
-        return "redirect:/planesConsumo";
+        return "redirect:/planesconsumo";
     }
 
     //DELETE
-    @GetMapping("/planesConsumo/{id}/delete")
+    @GetMapping("/planesconsumo/{id}/delete")
     public String planConsumoEliminar(@PathVariable("id") int id){
         planConsumoRepository.eliminarPlanConsumo(id);
-        return "redirect:/planesConsumo";        
+        return "redirect:/planesconsumo";        
     }
 
     

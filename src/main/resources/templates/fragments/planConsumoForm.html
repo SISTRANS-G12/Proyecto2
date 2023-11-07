@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fragmento</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <div th:fragment="planConsumoForm(titulo)" class="container border border-2 w-25">
+        <h1 class="text-center" th:text="${titulo}"></h1>
+        <form>
+
+            <label class="col-form-labeled">Descripcion</label>
+            <input class="form-control" type="text" id="descripcion" name="descripcion" required th:value="${planConsumo.descripcion}"/>
+
+            <label class="col-form-labeled">Descuento</label>
+            <input class="form-control" type="float" id="descuento" name="descuento" required th:value="${planConsumo.descuento}"/>
+
+            <label class="col-form-labeled">Precio fijo</label>
+            <input class="form-control" type="number" id="precio_fijo" name="precio_fijo" required th:value="${planConsumo.precio_fijo}"/>
+ 
+            <br>
+
+            <div class="text-center">
+                <input type="submit" value="Guardar" class="btn btn-primary"/>
+                <a th:href="@{/planesconsumo}" class="btn btn-primary">Cancelar</a>
+            </div>
+        </form> 
+
+
+    </div>
+
+
+</body>
+
+</html>

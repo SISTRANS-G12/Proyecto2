@@ -10,17 +10,27 @@ import org.springframework.stereotype.Controller;
 
 import uniandes.edu.co.proyecto.modelo.Servicio;
 import uniandes.edu.co.proyecto.repositorio.ServicioRepository;
+import uniandes.edu.co.proyecto.repositorio.LocalRepository;
+import uniandes.edu.co.proyecto.repositorio.TipoServicioRepository;
 
 @Controller
-public class ServiciosController {
+public class ServicioController {
     
     @Autowired
     private ServicioRepository servicioRepository;
+
+    @Autowired
+    private LocalRepository localRepository;
+
+    @Autowired
+    private TipoServicioRepository tipoServicioRepository;
 
     //CREATE 
     @GetMapping("/servicios/new")
     public String servicioForm(Model model){
         model.addAttribute("servicio", new Servicio());
+        model.addAttribute("locales", localRepository.darLocales());
+        model.addAttribute("tipos", tipoServicioRepository.darTiposServicio());
         return "servicioNuevo";
     }
 
@@ -49,6 +59,8 @@ public class ServiciosController {
         Servicio servicio = servicioRepository.darServicio(id);
         if(servicio != null){
             model.addAttribute("servicio", servicio);
+            model.addAttribute("locales", localRepository.darLocales());
+            model.addAttribute("tipos", tipoServicioRepository.darTiposServicio());
             return "servicioEditar";
         } else {
             return "redirect:/servicio";

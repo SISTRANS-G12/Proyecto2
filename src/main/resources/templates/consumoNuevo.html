@@ -3,13 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Crear reserva</title>
+        <title>Crear consumo</title>
         <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
     </head>
     <body>
-        <form action="#" th:action="@{/reservas/new/save}" method="post">
-            <div th:replace="~{fragments/reservaForm :: reservaForm(titulo='Crear reserva', planes=${planes}, habitaciones=${habitaciones}, usuarios=${usuarios})}">
+        <form action="#" th:action="@{/consumos/new/save}" method="post">
+            <div th:replace="~{fragments/consumoForm :: consumoForm(titulo='Crear consumo', habitaciones=${habitaciones}, servicios=${servicios})}">
             </div>   
         </form>  
     </body>
 </html>
+

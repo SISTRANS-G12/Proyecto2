@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 
 import uniandes.edu.co.proyecto.modelo.CheckOut;
 import uniandes.edu.co.proyecto.repositorio.CheckOutRepository;
+import uniandes.edu.co.proyecto.repositorio.ReservaRepository;
 
 @Controller
 public class CheckOutController {
@@ -18,10 +19,14 @@ public class CheckOutController {
     @Autowired
     private CheckOutRepository checkOutRepository;
 
+    @Autowired
+    private ReservaRepository reservaRepository;
+
     //CREATE
     @GetMapping("/checkouts/new")
     public String checkOutForm(Model model){
         model.addAttribute("checkOut", new CheckOut());
+        model.addAttribute("reservas", reservaRepository.darReservas());
         return "checkOutNuevo";
     }
 
@@ -44,6 +49,7 @@ public class CheckOutController {
         CheckOut checkOut = checkOutRepository.darCheckOut(id);
         if(checkOut != null){
             model.addAttribute("checkOut", checkOut);
+            model.addAttribute("reservas", reservaRepository.darReservas());
             return "checkOutEditar";
         } else {
             return "redirect:/checkouts";

@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 
 import uniandes.edu.co.proyecto.modelo.Reserva;
 import uniandes.edu.co.proyecto.repositorio.ReservaRepository;
+import uniandes.edu.co.proyecto.repositorio.UsuarioRepository;
+import uniandes.edu.co.proyecto.repositorio.PlanConsumoRepository;
+import uniandes.edu.co.proyecto.repositorio.HabitacionRepository;
 
 @Controller
 public class ReservaController {
@@ -17,10 +20,21 @@ public class ReservaController {
     @Autowired
     private ReservaRepository reservaRepository;
 
+    @Autowired
+    private PlanConsumoRepository planConsumoRepository;
+
+    @Autowired UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private HabitacionRepository habitacionRepository;
+
     //CREATE
     @GetMapping("/reservas/new")
     public String reservaForm(Model model){
         model.addAttribute("reserva", new Reserva());
+        model.addAttribute("planes", planConsumoRepository.darPlanesConsumo());
+        model.addAttribute("usuarios", usuarioRepository.darUsuarios());
+        model.addAttribute("habitaciones", habitacionRepository.darHabitaciones());
         return "reservaNuevo";
     }
 
@@ -50,6 +64,9 @@ public class ReservaController {
         Reserva reserva = reservaRepository.darReserva(id);
         if(reserva != null){
             model.addAttribute("reserva", reserva);
+            model.addAttribute("planes", planConsumoRepository.darPlanesConsumo());
+            model.addAttribute("usuarios", usuarioRepository.darUsuarios());
+            model.addAttribute("habitaciones", habitacionRepository.darHabitaciones());
             return "reservaEditar";
         } else {
             return "redirect:/reservas";
